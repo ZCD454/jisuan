@@ -25,7 +25,7 @@
   .btn-add { background: linear-gradient(135deg, #43cea2, #185a9d); }
   .btn-sub { background: linear-gradient(135deg, #f7971e, #ffd200); color: #5b3a00; }
   .screen-top {
-    height: 100vh; overflow-y: auto; display: none; flex-direction: column; align-items: center; gap: 26px; padding: 30px 20px;
+    height: 100vh; height: 100dvh; overflow-y: auto; display: none; flex-direction: column; align-items: center; gap: 26px; padding: 30px 20px;
     width: 100%;
   }
   .mode-label {
@@ -90,6 +90,35 @@
   .modal-close {
     flex: 0 0 auto; margin: 14px auto; padding: 10px 44px; font-size: 20px; border: none; border-radius: 12px;
     background: linear-gradient(135deg, #f7971e, #ffd200); color: #5b3a00; cursor: pointer;
+  }
+  @media (max-width: 1100px) and (min-width: 700px) {
+    .screen-top { gap: 20px; padding: 22px 14px; }
+    .modes-row { gap: 20px; max-width: 1200px; }
+    .mode-cell button, #btnNext100 { width: 190px; }
+    #btnNext100 { width: 210px; }
+    .mode-label { font-size: 30px; padding: 12px 26px; }
+    .eq-box { min-width: 0; max-width: 330px; padding: 22px 14px; }
+    .eq-main { font-size: 48px; }
+    .eq-info { font-size: 18px; margin-top: 6px; }
+    .act-btn { font-size: 20px; padding: 13px 22px; }
+    .btn-pair .act-btn { font-size: 15px; padding: 8px 14px; }
+    .mode-desc { font-size: 12px; max-width: 210px; }
+    .home-btn { width: 260px; font-size: 28px; }
+  }
+  @media (max-width: 699px) {
+    .modes-row { flex-direction: column; align-items: center; gap: 26px; }
+    .modes-left, .modes-mid, .modes-right { width: 100%; }
+    .eq-box { min-width: 0; width: 100%; max-width: 640px; padding: 24px 14px; }
+    .eq-main { font-size: 38px; letter-spacing: 3px; }
+    .eq-info { font-size: 16px; }
+    .mode-cell, .mode-cell button, #btnNext100 { width: 100%; max-width: 360px; }
+    .mode-desc { max-width: 100%; }
+    .mode-label { font-size: 26px; padding: 10px 20px; }
+    .screen-top { gap: 18px; padding: 18px 10px; }
+    .home-btn { width: 84vw; font-size: 22px; }
+    h1 { font-size: 26px; }
+    .act-btn { font-size: 17px; padding: 12px 16px; border-radius: 10px; }
+    .info { font-size: 15px; }
   }
 </style>
 </head>

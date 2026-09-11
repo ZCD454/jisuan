@@ -14,6 +14,7 @@
     user-select: none;
   }
   .screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; padding: 20px; }
+  #prog { justify-content: flex-start; padding-top: 10px; }
   h1 { color: #c94f3d; font-size: 46px; text-shadow: 2px 2px 0 rgba(255,255,255,.8); }
   .home-btn-row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
   .home-btn {
@@ -24,6 +25,45 @@
   .home-btn:active { transform: scale(.96); }
   .btn-add { background: linear-gradient(135deg, #43cea2, #185a9d); }
   .btn-sub { background: linear-gradient(135deg, #f7971e, #ffd200); color: #5b3a00; }
+  .home-col { display: flex; flex-direction: column; gap: 16px; }
+  .btn-mul { background: linear-gradient(135deg, #f6d365, #fda085); color: #5b3a00; }
+  .btn-div { background: linear-gradient(135deg, #a18cd1, #fbc2eb); color: #4a2a6a; }
+  .btn-progress { background: #fff; color: #185a9d; border: 2px solid #43cea2; width: 440px; font-size: 22px; padding: 14px 0; box-shadow: 0 4px 14px rgba(0,0,0,.15); }
+  .todo-msg { font-size: 26px; color: #7a4a3a; background: rgba(255,255,255,.85); padding: 14px 34px; border-radius: 18px; }
+  .bg-todo { background: linear-gradient(135deg, #667eea, #764ba2); }
+  .prog-row { display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; gap: 14px; width: 100%; max-width: 1500px; }
+  .prog-btn {
+    background: #fff; color: #185a9d; border: 2px solid #43cea2; border-radius: 14px;
+    padding: 14px 16px; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    transition: transform .12s; flex: 1 1 0; min-width: 0; white-space: nowrap;
+  }
+  .prog-btn:active { transform: scale(.94); }
+.prog-btn.prog-on { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border-color: #667eea; font-weight: bold; box-shadow: 0 4px 12px rgba(102,126,234,.4); }
+  .prog-title { font-size: 20px; padding: 6px 20px; }
+  .prog-body { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.lk-wrap { max-width: 96vw; max-height: 62vh; overflow: auto; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.15); padding: 8px; }
+.lk-table { border-collapse: collapse; font-size: 14px; background: #fff; border: 3px solid #444; }
+.lk-table th, .lk-table td { border: 1px solid #bbb; padding: 7px 14px; text-align: center; white-space: nowrap; }
+  .lk-table tr.chap-top td { border-top: 3px solid #555; }
+.lk-table th { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; position: sticky; top: 0; z-index: 2; }
+.lk-check { cursor: pointer; min-width: 66px; user-select: none; font-size: 16px; }
+.lk-check.ck-done { background: #8bc34a; color: #fff; font-weight: bold; }
+.lk-fx { min-width: 130px; background: #f3f7ff; font-size: 12px; line-height: 1.5; text-align: center; user-select: none; color: #4469a8; }
+.lk-fx:hover { background: #e3edff; }
+.lk-fx-ctrl { font-weight: bold; margin-bottom: 2px; }
+.lk-fx-btn { display: inline-block; width: 20px; height: 20px; line-height: 18px; border-radius: 50%; background: #fff; border: 1px solid #4469a8; color: #4469a8; cursor: pointer; margin: 0 4px; vertical-align: middle; }
+.lk-fx-btn:active { background: #4469a8; color: #fff; }
+.lk-fx-btn.lk-fx-minus { border-color: #c0392b; color: #c0392b; }
+.lk-fx-btn.lk-fx-minus:active { background: #c0392b; color: #fff; }
+.fx-popup { position: fixed; z-index: 999; background: #fff; border: 2px solid #4469a8; box-shadow: 0 8px 24px rgba(0,0,0,.25); padding: 12px 16px; font-size: 13px; color: #333; max-width: 320px; max-height: 320px; overflow-y: auto; }
+  .stat-popup { max-width: 460px; max-height: 420px; }
+.fx-popup-title { font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #4469a8; cursor: move; user-select: none; }
+.fx-popup-close { float: right; cursor: pointer; font-size: 18px; color: #c0392b; margin-top: -4px; }
+.lk-fx-time { cursor: pointer; min-width: 70px; font-size: 16px; text-align: center; background: #f0f0f0; color: #555; }
+.lk-fx-time:hover { background: #e0e0e0; }
+.fx-popup table { border-collapse: collapse; width: 100%; font-size: 12px; margin-top: 4px; }
+.fx-popup th, .fx-popup td { border: 1px solid #ccc; padding: 4px 6px; text-align: center; }
+.fx-popup th { background: #eef3fb; color: #4469a8; }
   .screen-top {
     height: 100vh; height: 100dvh; overflow-y: auto; display: none; flex-direction: column; align-items: center; gap: 26px; padding: 30px 20px;
     width: 100%;
@@ -70,6 +110,7 @@
   .act-next { background: linear-gradient(135deg, #43cea2, #185a9d); }
   .act-all { background: linear-gradient(135deg, #667eea, #764ba2); }
   .act-back { background: linear-gradient(135deg, #f7971e, #ffd200); color: #5b3a00; }
+  .lk-note { font-size: 13px; color: #888; max-width: 420px; line-height: 1.5; text-align: left; }
   .act-reset { background: linear-gradient(135deg, #cfd8dc, #90a4ae); color: #37474f; }
   #modal {
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55);
@@ -127,8 +168,42 @@
 <div id="home" class="screen">
   <h1>100以内的加减乘除</h1>
   <div class="home-btn-row">
-    <button class="home-btn btn-add" onclick="enter(1)">100以内加法</button>
-    <button class="home-btn btn-sub" onclick="enter(2)">100以内减法</button>
+    <div class="home-col">
+      <button class="home-btn btn-add" onclick="enter(1)">100以内加法</button>
+      <button class="home-btn btn-mul" onclick="enterTodo('100以内乘法')">100以内乘法</button>
+    </div>
+    <div class="home-col">
+      <button class="home-btn btn-sub" onclick="enter(2)">100以内减法</button>
+      <button class="home-btn btn-div" onclick="enterTodo('100以内除法')">100以内除法</button>
+    </div>
+  </div>
+  <button class="home-btn btn-progress" onclick="enterProg()">数感和思维的学习统计</button>
+</div>
+
+<div id="todo" class="screen" style="display:none">
+  <div id="todo-title" class="mode-label bg-todo">功能待定</div>
+  <div class="todo-msg">功能开发中，敬请期待…</div>
+  <button class="home-btn act-back" onclick="backTodo()">返回</button>
+</div>
+
+<div id="prog" class="screen" style="display:none">
+  <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
+  <div class="mode-label bg-todo prog-title">数感和思维的学习统计</div>
+  <button class="act-btn act-back" style="font-size:14px;padding:6px 14px" onclick="openStat()">学习进度统计</button>
+</div>
+  <div class="prog-row">
+    <button class="prog-btn" onclick="showProg('数感 L1')">数感 L1</button>
+    <button class="prog-btn" onclick="showProg('思维 L1(新版)')">思维 L1(新版)</button>
+    <button class="prog-btn" onclick="showProg('思维 L2（新版）')">思维 L2（新版）</button>
+    <button class="prog-btn" onclick="showProg('数感  L2')">数感  L2</button>
+    <button class="prog-btn" onclick="showProg('数感与思维 L3（上）')">数感与思维 L3（上）</button>
+    <button class="prog-btn" onclick="showProg('数感与思维 L3（下）')">数感与思维 L3（下）</button>
+  </div>
+  <div id="prog-body" class="prog-body">
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="todo-msg">点击上面，选切界面</div>
+      <button class="act-btn act-back" style="font-size:15px;padding:8px 18px" onclick="backProg()">返回</button>
+    </div>
   </div>
 </div>
 
@@ -430,6 +505,360 @@ function resetAll() {
 function back() {
   document.getElementById('view').style.display = 'none';
   document.getElementById('home').style.display = 'flex';
+}
+
+function enterTodo(name) {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('todo').style.display = 'flex';
+  document.getElementById('todo-title').textContent = name;
+  document.getElementById('todo-title').className = 'mode-label bg-todo';
+}
+
+function backTodo() {
+  document.getElementById('todo').style.display = 'none';
+  document.getElementById('home').style.display = 'flex';
+}
+
+function enterProg() {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('prog').style.display = 'flex';
+}
+
+function backProg() {
+  document.getElementById('prog').style.display = 'none';
+  document.getElementById('home').style.display = 'flex';
+}
+
+function showProg(name) {
+  var bs = document.getElementsByClassName('prog-btn');
+  for (var i = 0; i < bs.length; i++) {
+    if (bs[i].textContent.trim() === name) { bs[i].classList.add('prog-on'); } else { bs[i].classList.remove('prog-on'); }
+  }
+  var el = document.getElementById('prog-body');
+  if (DS[name]) { renderCheck(name); return; }
+  el.innerHTML =
+    '<div class="mode-label bg-todo" style="font-size:24px">' + name + '</div>' +
+    '<div class="todo-msg">点击上面，选切界面</div>';
+  var back = document.createElement('button');
+  back.className = 'act-btn act-back';
+  back.style.cssText = 'font-size:15px;padding:8px 18px';
+  back.textContent = '返回';
+  back.onclick = backProg;
+  el.appendChild(back);
+}
+
+var DS = {
+  '数感 L1': { key: 'dzj_n1', chMerge: 1, cols: [ ['章节','ch'],['子节','sub'],['内容','t'] ], rows: [{"ch":"第1章 10以内数的建形和比较","sub":"第1节","t":"5以内一眼识数"},{"ch":"","sub":"第2节","t":"5-7的数字建形"},{"ch":"","sub":"第3节","t":"8-10的数字建形"},{"ch":"","sub":"第4节","t":"玩转1-10"},{"ch":"","sub":"第5节","t":"10以内数量的比较"},{"ch":"","sub":"第6节","t":"10以内数字的比较"},{"ch":"第2章 搞定10以内的加法","sub":"第1节","t":"5以内加法故事"},{"ch":"","sub":"第2节","t":"5以内的加法游戏"},{"ch":"","sub":"第3节","t":"10以内的加法故事"},{"ch":"","sub":"第4节","t":"10以内的加法游戏"},{"ch":"第3章 搞定10以内的减法","sub":"第1节","t":"5以内减法故事"},{"ch":"","sub":"第2节","t":"5以内减法游戏"},{"ch":"","sub":"第3节","t":"10以内减法故事"},{"ch":"","sub":"第4节","t":"10以内减法游戏"},{"ch":"第4章 100以内的数字建形","sub":"第1节","t":"20以内的数字建形"},{"ch":"","sub":"第2节","t":"整十数的数字建形"},{"ch":"","sub":"第3节","t":"100以内数的建形"},{"ch":"","sub":"第4节","t":"玩转1-100"},{"ch":"第5章 搞定20以内的加法","sub":"第1节","t":"整10魔法"},{"ch":"","sub":"第2节","t":"不进位简单运算"},{"ch":"","sub":"第3节","t":"凑10巧算好朋友"},{"ch":"","sub":"第4节","t":"9+几"},{"ch":"","sub":"第5节","t":"8+几"},{"ch":"","sub":"第6节","t":"7+几"},{"ch":"","sub":"第7节","t":"6+几"},{"ch":"","sub":"第8节","t":"综合游戏：20以内进位加法"},{"ch":"第6章 搞定20以内的减法","sub":"第1节","t":"不退位简单运算"},{"ch":"","sub":"第2节","t":"巧算：破十法"},{"ch":"","sub":"第3节","t":"巧算：平十法"},{"ch":"","sub":"第4节","t":"综合游戏：20以内的减法"},{"ch":"第7章 一元推算","sub":"第1节","t":"一图四式"},{"ch":"","sub":"第2节","t":"求总数"},{"ch":"","sub":"第3节","t":"求部分"},{"ch":"","sub":"第4节","t":"一元推算"},{"ch":"第8章 单双数","sub":"第1节","t":"10以内的单双数"},{"ch":"","sub":"第2节","t":"100以内的单双数"},{"ch":"","sub":"第3节","t":"单双数的性质"},{"ch":"第9章 搞定100以内的加法","sub":"第1节","t":"不进位简单运算"},{"ch":"","sub":"第2节","t":"巧算：找朋友"},{"ch":"","sub":"第3节","t":"巧算：凑整十"},{"ch":"","sub":"第4节","t":"巧算：借来还去"},{"ch":"","sub":"第5节","t":"综合游戏：100以内巧算混合"},{"ch":"第10章 搞定100以内的减法","sub":"第1节","t":"不退位简单运算"},{"ch":"","sub":"第2节","t":"巧算：平十平百法"},{"ch":"","sub":"第3节","t":"巧算：破十破百法"},{"ch":"","sub":"第4节","t":"巧算：打包法"},{"ch":"","sub":"第5节","t":"巧算：年龄差"},{"ch":"","sub":"第6节","t":"巧算：扔去捡回"},{"ch":"","sub":"第7节","t":"巧算：带符号搬家"},{"ch":"","sub":"第8节","t":"综合游戏：100以内巧算综合"}] },
+  '数感  L2': { key: 'dzj_n2', chMerge: 1, cols: [ ['章节','ch'],['子节','sub'],['内容','t'] ], rows: [{"ch":"第1章 表内乘法","sub":"第1节","t":"认识乘法"},{"ch":"","sub":"第2节","t":"乘法的性质"},{"ch":"","sub":"第3节","t":"带5的乘法"},{"ch":"","sub":"第4节","t":"带2的乘法"},{"ch":"","sub":"第5节","t":"西游记与乘法口诀"},{"ch":"","sub":"第6节","t":"带3的乘法"},{"ch":"","sub":"第7节","t":"带4的乘法"},{"ch":"","sub":"第8节","t":"2-5乘法口诀解应用题"},{"ch":"","sub":"第9节","t":"带6的乘法"},{"ch":"","sub":"第10节","t":"带7的乘法"},{"ch":"","sub":"第11节","t":"带8的乘法"},{"ch":"","sub":"第12节","t":"带9的乘法"},{"ch":"","sub":"第13节","t":"乘法口诀大通关"},{"ch":"","sub":"第14节","t":"表外乘法初窥"},{"ch":"","sub":"第15节","t":"因数分解"},{"ch":"第2章 表内除法","sub":"第1节","t":"平均分"},{"ch":"","sub":"第2节","t":"除法算式"},{"ch":"","sub":"第3节","t":"乘法与除法关系"},{"ch":"","sub":"第4节","t":"乘法推算"},{"ch":"","sub":"第5节","t":"乘法口诀求商（2-5）"},{"ch":"","sub":"第6节","t":"乘法口诀求商（6-9）"},{"ch":"","sub":"第7节","t":"乘除法综合应用"},{"ch":"","sub":"第8节","t":"除法大通关"},{"ch":"第3章 混合运算","sub":"第1节","t":"加减混合"},{"ch":"","sub":"第2节","t":"小括号（1）"},{"ch":"","sub":"第3节","t":"先乘除再加减"},{"ch":"","sub":"第4节","t":"小括号（2）"},{"ch":"","sub":"第5节","t":"混合运算应用题"},{"ch":"","sub":"第6节","t":"混合运算大闯关"},{"ch":"第4章 千以内加减法","sub":"第1节","t":"理解千以内的数"},{"ch":"","sub":"第2节","t":"加整十整百"},{"ch":"","sub":"第3节","t":"横式千以内加法"},{"ch":"","sub":"第4节","t":"横式千以内减法"},{"ch":"","sub":"第5节","t":"竖式加法-不进位"},{"ch":"","sub":"第6节","t":"竖式加法-进位"},{"ch":"","sub":"第7节","t":"竖式加法-连续进位"},{"ch":"","sub":"第8节","t":"竖式加法-连续后出现0"},{"ch":"","sub":"第9节","t":"加法竖式谜"},{"ch":"","sub":"第10节","t":"竖式减法-不退位"},{"ch":"","sub":"第11节","t":"竖式减法-退位"},{"ch":"","sub":"第12节","t":"竖式减法-连续退位"},{"ch":"","sub":"第13节","t":"减法竖式谜"},{"ch":"","sub":"第14节","t":"加减法验算"},{"ch":"第5章 乘除法竖式及余数","sub":"第1节","t":"认识余数"},{"ch":"","sub":"第2节","t":"除法竖式与余数"},{"ch":"","sub":"第3节","t":"用乘法口诀试商"},{"ch":"","sub":"第4节","t":"简单余数应用题"},{"ch":"","sub":"第5节","t":"除法的验算"},{"ch":"","sub":"第6节","t":"两位数乘一位数-口算"},{"ch":"","sub":"第7节","t":"两位数乘一位数-竖式"},{"ch":"第6章 应用题专项提升（1）","sub":"第1节","t":"比多倍"},{"ch":"","sub":"第2节","t":"分一分"},{"ch":"","sub":"第3节","t":"韦恩图"},{"ch":"","sub":"第4节","t":"植树问题"},{"ch":"","sub":"第5节","t":"周期问题"},{"ch":"","sub":"第6节","t":"蜗牛爬井"},{"ch":"","sub":"第7节","t":"和倍与差倍"},{"ch":"","sub":"第8节","t":"倒推法"},{"ch":"","sub":"第9节","t":"年龄问题"},{"ch":"","sub":"第10节","t":"图形算式"}] },
+  '思维 L1(新版)': { key: 'dzj_s1', cols: [ ['章节','ch'],['内容','t'],['摩比','m'] ], rows: [{"ch":"1-1","t":"圆柱体","m":"探索篇1-第1讲 认识圆柱","bg":"#fce4d3"},{"ch":"1-2","t":"圆柱体（习题课）","m":"探索篇1-第1讲 认识圆柱","bg":"#fce4d3"},{"ch":"2-1","t":"守恒","m":"探索篇1-第2讲 守恒","bg":"#d9e1f4"},{"ch":"2-2","t":"守恒（习题课）","m":"探索篇1-第2讲 守恒","bg":"#d9e1f4"},{"ch":"","t":"","m":"探索篇1-第3讲 注意力训练","bg":""},{"ch":"","t":"","m":"探索篇1-第4讲 故事题运算","bg":""},{"ch":"3-1","t":"多角度分类","m":"探索篇2-第5讲 多角度分类","bg":"#e7e6e6"},{"ch":"3-2","t":"多角度分类（习题课）","m":"探索篇2-第5讲 多角度分类","bg":"#e7e6e6"},{"ch":"4-1","t":"统计进阶","m":"探索篇2-第6讲 统计进阶","bg":"#e3f2d9"},{"ch":"4-2","t":"统计进阶（习题课）","m":"探索篇2-第6讲 统计进阶","bg":"#e3f2d9"},{"ch":"","t":"","m":"探索篇2-第7讲 迷宫游戏","bg":""},{"ch":"","t":"","m":"探索篇2-第8讲 图形拼摆","bg":""},{"ch":"","t":"","m":"探索篇3-第9讲 数的比较","bg":""},{"ch":"5-1","t":"轴对称图形","m":"探索篇3-第10讲 轴对称图形","bg":"#fce4d3"},{"ch":"5-2","t":"轴对称图形（习题课）","m":"探索篇3-第10讲 轴对称图形","bg":"#fce4d3"},{"ch":"6-1","t":"周期推理","m":"探索篇3-第11讲 周期推理","bg":"#d9e1f4"},{"ch":"6-2","t":"周期推理（习题课）","m":"探索篇3-第11讲 周期推理","bg":"#d9e1f4"},{"ch":"7-1","t":"图形等分","m":"探索篇3-第12讲 图形等分","bg":"#e7e6e6"},{"ch":"7-2","t":"图形等分（习题课）","m":"探索篇3-第12讲 图形等分","bg":"#e7e6e6"},{"ch":"","t":"","m":"探索篇4-第13讲 操作中的加法","bg":""},{"ch":"","t":"","m":"探索篇4-第14讲 方格游戏","bg":""},{"ch":"8-1","t":"空间方位","m":"探索篇4-第15讲 空间方位","bg":"#e3f2d9"},{"ch":"8-2","t":"空间方位（习题课）","m":"探索篇4-第15讲 空间方位","bg":"#e3f2d9"},{"ch":"","t":"","m":"探索篇4-第16讲 操作中的减法","bg":""},{"ch":"9-1","t":"图形的运动","m":"探索篇5-第17讲 图形的运动","bg":"#fce4d3"},{"ch":"9-2","t":"图形的运动（习题课）","m":"探索篇5-第17讲 图形的运动","bg":"#fce4d3"},{"ch":"10-1","t":"测量游戏","m":"探索篇5-第18讲 测量游戏","bg":"#d9e1f4"},{"ch":"10-2","t":"测量游戏（习题课）","m":"探索篇5-第18讲 测量游戏","bg":"#d9e1f4"},{"ch":"11-1","t":"类比推理","m":"探索篇5-第19讲 类比推理","bg":"#e7e6e6"},{"ch":"11-2","t":"类比推理（习题课）","m":"探索篇5-第19讲 类比推理","bg":"#e7e6e6"},{"ch":"12-1","t":"柱体探秘","m":"探索篇5-第20讲 柱体探秘","bg":"#e3f2d9"},{"ch":"12-2","t":"柱体探秘（习题课）","m":"探索篇5-第20讲 柱体探秘","bg":"#e3f2d9"},{"ch":"13-1","t":"七巧板 同比例拼摆","m":"探索篇6-第21讲 七巧板 同比例拼摆","bg":"#fce4d3"},{"ch":"13-2","t":"七巧板 同比例拼摆（习题课）","m":"探索篇6-第21讲 七巧板 同比例拼摆","bg":"#fce4d3"},{"ch":"","t":"","m":"探索篇6-第22讲 认识相邻数","bg":""},{"ch":"14-1","t":"好玩的点和线","m":"探索篇6-第23讲 好玩的点和线","bg":"#d9e1f4"},{"ch":"14-2","t":"好玩的点和线（习题课）","m":"探索篇6-第23讲 好玩的点和线","bg":"#d9e1f4"},{"ch":"","t":"","m":"探索篇6-第24讲 认识单双数","bg":""},{"ch":"15-1","t":"折纸中的数学","m":"探索篇7-第25讲 折纸中的数学","bg":"#e7e6e6"},{"ch":"15-2","t":"折纸中的数学（习题课）","m":"探索篇7-第25讲 折纸中的数学","bg":"#e7e6e6"},{"ch":"16-1","t":"数量等分","m":"探索篇7-第26讲 数量等分","bg":"#e3f2d9"},{"ch":"16-2","t":"数量等分（习题课）","m":"探索篇7-第26讲 数量等分","bg":"#e3f2d9"},{"ch":"17-1","t":"火柴游戏 图形变换","m":"探索篇7-第27讲 火柴游戏 图形变换","bg":"#fce4d3"},{"ch":"17-2","t":"火柴游戏 图形变换（习题课）","m":"探索篇7-第27讲 火柴游戏 图形变换","bg":"#fce4d3"},{"ch":"18-1、2","t":"数独启蒙 上、下","m":"探索篇7-第28讲 数独启蒙","bg":"#d9e1f4"},{"ch":"18-2","t":"数独启蒙（习题课）","m":"探索篇7-第28讲 数独启蒙","bg":"#d9e1f4"},{"ch":"19-1","t":"锥体探秘","m":"探索篇8-第29讲 锥体探秘","bg":"#e7e6e6"},{"ch":"19-2","t":"锥体探秘（习题课）","m":"探索篇8-第29讲 锥体探秘","bg":"#e7e6e6"},{"ch":"20-1","t":"基础代换","m":"探索篇8-第30讲 基础代换","bg":"#e3f2d9"},{"ch":"20-2","t":"基础代换（习题课）","m":"探索篇8-第30讲 基础代换","bg":"#e3f2d9"},{"ch":"21-1","t":"体验时间","m":"探索篇8-第31讲 体验时间","bg":"#fce4d3"},{"ch":"21-2","t":"体验时间（习题课）","m":"探索篇8-第31讲 体验时间","bg":"#fce4d3"},{"ch":"22-1","t":"不等式变换","m":"探索篇8-第32讲 不等式变换","bg":"#d9e1f4"},{"ch":"22-2","t":"不等式变换（习题课）","m":"探索篇8-第32讲 不等式变换","bg":"#d9e1f4"},{"ch":"23-1","t":"行列位置应用","m":"探索篇9-第33讲 行列位置应用","bg":"#e7e6e6"},{"ch":"23-2","t":"行列位置应用（习题课）","m":"探索篇9-第33讲 行列位置应用","bg":"#e7e6e6"},{"ch":"24-1","t":"差数的秘密","m":"探索篇9-第34讲 差数的秘密","bg":"#e3f2d9"},{"ch":"24-2","t":"差数的秘密（习题课）","m":"探索篇9-第34讲 差数的秘密","bg":"#e3f2d9"},{"ch":"25-1","t":"玩转面积","m":"探索篇9-第35讲 玩转面积","bg":"#fce4d3"},{"ch":"25-2","t":"玩转面积（习题课）","m":"探索篇9-第35讲 玩转面积","bg":"#fce4d3"},{"ch":"26-1","t":"运输游戏","m":"探索篇9-第36讲 运输游戏","bg":"#d9e1f4"},{"ch":"26-2","t":"运输游戏（习题课）","m":"探索篇9-第36讲 运输游戏","bg":"#d9e1f4"},{"ch":"27-1","t":"多维度分类","m":"探索篇10-第37讲 多维度分类","bg":"#e7e6e6"},{"ch":"27-2","t":"多维度分类（习题课）","m":"探索篇10-第37讲 多维度分类","bg":"#e7e6e6"},{"ch":"28-1","t":"图形重叠游戏1","m":"探索篇10-第38讲 图形重叠游戏","bg":"#e3f2d9"},{"ch":"28-2","t":"图形重叠游戏2","m":"探索篇10-第38讲 图形重叠游戏","bg":"#e3f2d9"},{"ch":"28-3","t":"图形重叠游戏3","m":"探索篇10-第38讲 图形重叠游戏","bg":"#e3f2d9"},{"ch":"29-1","t":"棋子游戏","m":"探索篇10-第39讲 棋子游戏","bg":"#fce4d3"},{"ch":"29-2","t":"棋子游戏（习题课）","m":"探索篇10-第39讲 棋子游戏","bg":"#fce4d3"},{"ch":"30-1","t":"巧数图形","m":"探索篇10-第40讲 巧数图形","bg":"#d9e1f4"},{"ch":"30-2","t":"巧数图形（习题课）","m":"探索篇10-第40讲 巧数图形","bg":"#d9e1f4"},{"ch":"31-1","t":"扑克游戏","m":"（）","bg":"#e7e6e6"},{"ch":"31-2","t":"扑克游戏（习题课）","m":"（）","bg":"#e7e6e6"}] },
+  '数感与思维 L3（上）': { key: 'dzj_l3a', chMerge: 1, chBand: 1, seqTitle: '总序', subKey: 'sub', cols: [ ['章节','ch'],['课程','code'],['内容','t'],['难度','d'],['课件','k'] ], rows: [{"ch":"第一章 生活中的大数与小数","sub":"1","code":"1-1-1","t":"认识万及更大的数","d":"校内","k":"有1个"},{"ch":"","sub":"2","code":"1-1-2","t":"认识万及更大的数【拔高习题课】","d":"校内","k":""},{"ch":"","sub":"3","code":"1-2-1","t":"几位数趣题","d":"奥数","k":""},{"ch":"","sub":"4","code":"1-2-2","t":"几位数趣题【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"5","code":"1-3-1","t":"元角分的竖式计算-1","d":"校内","k":""},{"ch":"","sub":"6","code":"1-3-2","t":"元角分的竖式计算-1【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"7","code":"1-4-1","t":"元角分的竖式计算-2","d":"校内","k":""},{"ch":"","sub":"8","code":"1-4-2","t":"元角分的竖式计算-2【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"9","code":"1-5-1","t":"钱币中的小数-1","d":"校内","k":""},{"ch":"","sub":"10","code":"1-5-2","t":"钱币中的小数-1【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"11","code":"1-6-1","t":"钱币中的小数-2","d":"校内","k":""},{"ch":"","sub":"12","code":"1-6-2","t":"钱币中的小数-2【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"13","code":"1-7-1","t":"重量单位","d":"校内","k":""},{"ch":"","sub":"14","code":"1-7-2","t":"重量单位【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"15","code":"1-8-1","t":"长度单位-1","d":"校内","k":""},{"ch":"","sub":"16","code":"1-8-2","t":"长度单位-1【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"17","code":"1-9-1","t":"长度单位-2","d":"校内","k":""},{"ch":"","sub":"18","code":"1-9-2","t":"长度单位-2【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"19","code":"1-10-1","t":"测量一栋楼有多高 校内拓展","d":"校内","k":""},{"ch":"第二章 万以内的加减法","sub":"1","code":"2-1-1","t":"竖式加法","d":"校内","k":""},{"ch":"","sub":"2","code":"2-1-2","t":"竖式加法【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"2-2-1","t":"加法 提速练习","d":"校内","k":"有1个"},{"ch":"","sub":"4","code":"2-3-1","t":"竖式减法","d":"校内","k":""},{"ch":"","sub":"5","code":"2-3-2","t":"竖式减法【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"6","code":"2-4-1","t":"减法 提速练习","d":"校内","k":"有1个"},{"ch":"","sub":"7","code":"2-5-1","t":"加减法巧算","d":"奥数","k":""},{"ch":"","sub":"8","code":"2-5-2","t":"加减法巧算【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"9","code":"2-6-1","t":"加减法综合应用","d":"校内","k":""},{"ch":"","sub":"10","code":"2-6-2","t":"加减法综合应用【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"11","code":"2-7-1","t":"加减法趣题","d":"奥数","k":""},{"ch":"","sub":"12","code":"2-7-2","t":"加减法趣题【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"第三章 多位数乘一位数","sub":"1","code":"3-1-1","t":"乘法口算","d":"校内","k":""},{"ch":"","sub":"2","code":"3-1-2","t":"乘法口算【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"3-2-1","t":"笔算乘法-1","d":"校内","k":""},{"ch":"","sub":"4","code":"3-2-2","t":"笔算乘法-1【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"5","code":"3-3-1","t":"笔算乘法-2","d":"校内","k":""},{"ch":"","sub":"6","code":"3-3-2","t":"笔算乘法-2【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"7","code":"3-4-1","t":"巧算与估算","d":"奥数","k":""},{"ch":"","sub":"8","code":"3-4-2","t":"巧算与估算【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"9","code":"3-5-1","t":"乘法综合应用","d":"校内","k":""},{"ch":"","sub":"10","code":"3-6-1","t":"乘法趣题【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"11","code":"3-5-2","t":"乘法综合应用【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"12","code":"3-6-2","t":"乘法趣题","d":"奥数","k":""},{"ch":"第四章 时间与日期","sub":"1","code":"4-1-1","t":"时间换算","d":"校内","k":""},{"ch":"","sub":"2","code":"4-1-2","t":"时间换算【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"4-2-1","t":"计算时间","d":"校内","k":""},{"ch":"","sub":"4","code":"4-2-2","t":"计算时间【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"5","code":"4-3-1","t":"年、月、日、星期","d":"校内","k":""},{"ch":"","sub":"6","code":"4-3-2","t":"年、月、日、星期【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"第五章 几何","sub":"1","code":"5-1-1","t":"周长问题","d":"校内","k":""},{"ch":"","sub":"2","code":"5-1-2","t":"周长问题【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"第六章 奥数应用题","sub":"1","code":"6-1-1","t":"归一与归总问题-1","d":"奥数","k":"有1个"},{"ch":"","sub":"2","code":"6-2-1","t":"归一与归总问题-2","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"6-3-1","t":"鸡兔同笼问题-1","d":"奥数","k":"有1个"},{"ch":"","sub":"4","code":"6-4-1","t":"盈亏问题-1","d":"奥数","k":"有1个"}] },
+  '数感与思维 L3（下）': { key: 'dzj_l3b', chMerge: 1, chBand: 1, seqTitle: '总序', subKey: 'sub', cols: [ ['章节','ch'],['课程','code'],['内容','t'],['难度','d'],['课件','k'] ], rows: [{"ch":"","sub":"1","code":"0-6","t":"乘除法趣题-1","d":"奥数","k":"有1个"},{"ch":"第一章 除法","sub":"1","code":"1-1-1","t":"两位数除以一位数","d":"校内","k":""},{"ch":"","sub":"2","code":"1-1-2","t":"两位数除以一位数【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"1-2-1","t":"三位数除以一位数-1","d":"校内","k":""},{"ch":"","sub":"4","code":"1-2-2","t":"三位数除以一位数-1【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"5","code":"1-3-1","t":"三位数除以一位数-2","d":"校内","k":""},{"ch":"","sub":"6","code":"1-3-2","t":"三位数除以一位数-2【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"7","code":"1-4-1","t":"两三位数除以一位数 提速练习","d":"校内","k":""},{"ch":"","sub":"8","code":"1-5-1","t":"乘除混合运算","d":"校内","k":""},{"ch":"","sub":"9","code":"1-5-2","t":"乘除混合运算【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"第二章 乘法","sub":"1","code":"2-1-1","t":"两位数乘两位数-1","d":"校内","k":""},{"ch":"","sub":"2","code":"2-1-2","t":"两位数乘两位数-1【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"2-2-1","t":"两位数乘两位数-2","d":"校内","k":""},{"ch":"","sub":"4","code":"2-2-2","t":"两位数乘两位数-2【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"5","code":"2-3-1","t":"两位数乘两位数 提速练习","d":"校内","k":"有1个"},{"ch":"","sub":"6","code":"2-4-1","t":"乘除法应用题","d":"校内","k":""},{"ch":"","sub":"7","code":"2-4-2","t":"乘除法趣题-2","d":"奥数","k":"有1个"},{"ch":"第三章 平面图形及面积","sub":"1","code":"3-1-1","t":"面积与面积单位","d":"校内","k":""},{"ch":"","sub":"2","code":"3-2-1","t":"长方形的面积","d":"校内","k":""},{"ch":"","sub":"3","code":"3-2-2","t":"第1、2节（面积）【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"4","code":"3-3-1","t":"对称、平移、旋转","d":"校内","k":""},{"ch":"","sub":"5","code":"3-3-2","t":"对称、平移、旋转【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"6","code":"3-4-1","t":"巧求面积-1","d":"奥数","k":"有1个"},{"ch":"","sub":"7","code":"3-5-1","t":"巧求面积-2","d":"奥数","k":"有1个"},{"ch":"","sub":"8","code":"3-6-1","t":"面积法解应用题","d":"奥数","k":"有1个"},{"ch":"第四章 奥数应用题（一）","sub":"1","code":"4-1-1","t":"还原问题进阶-1","d":"奥数","k":""},{"ch":"","sub":"2","code":"4-2-1","t":"还原问题进阶-2","d":"奥数","k":""},{"ch":"","sub":"3","code":"4-3-1","t":"和差倍问题进阶-1","d":"奥数","k":""},{"ch":"","sub":"4","code":"4-4-1","t":"和差倍问题进阶-2","d":"奥数","k":""},{"ch":"","sub":"5","code":"4-5-1","t":"周期问题进阶-1","d":"奥数","k":""},{"ch":"","sub":"6","code":"4-6-1","t":"周期问题进阶-2","d":"奥数","k":""},{"ch":"第五章 分数初步","sub":"1","code":"5-1-1","t":"认识分数","d":"校内","k":""},{"ch":"","sub":"2","code":"5-1-2","t":"认识分数【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"","sub":"3","code":"5-2-1","t":"同分母加减与比大小","d":"校内","k":""},{"ch":"","sub":"4","code":"5-2-2","t":"同分母加减与比大小【拔高习题课】","d":"奥数","k":"有1个"},{"ch":"第六章 排列组合","sub":"1","code":"6-1-1","t":"枚举法-1","d":"奥数","k":""},{"ch":"","sub":"2","code":"6-2-1","t":"枚举法-2","d":"奥数","k":""},{"ch":"第七章 奥数应用题（二）","sub":"1","code":"7-1-1","t":"年龄问题进阶-1","d":"奥数","k":""},{"ch":"","sub":"2","code":"7-2-1","t":"年龄问题进阶-2","d":"奥数","k":""},{"ch":"","sub":"3","code":"7-3-1","t":"间隔与方阵-1","d":"奥数","k":""},{"ch":"","sub":"4","code":"7-4-1","t":"间隔与方阵-2","d":"奥数","k":""},{"ch":"","sub":"5","code":"7-5-1","t":"鸡兔同笼-2","d":"奥数","k":""},{"ch":"","sub":"6","code":"7-6-1","t":"盈亏问题-2","d":"奥数","k":""},{"ch":"第八章","sub":"1","code":"8-1-1","t":"等差数列-1","d":"奥数","k":""},{"ch":"","sub":"2","code":"8-2-1","t":"等差数列-2","d":"奥数","k":""},{"ch":"","sub":"3","code":"8-3-1","t":"巧填算符进阶","d":"奥数","k":""},{"ch":"","sub":"4","code":"8-4-1","t":"三阶幻方","d":"奥数","k":""},{"ch":"","sub":"5","code":"8-5-1","t":"定义新运算","d":"奥数","k":""}] }
+};
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+var chPalette = ['#ffe3d1', '#e0f0ff', '#e6f7e0', '#fff4d6', '#f0e6ff', '#d6f3f3', '#ffe3ec', '#ece7fb'];
+function fmtMb(txt) {
+  var i = txt.lastIndexOf(' ');
+  if (i < 0) return '<span style="color:#e8344e">' + esc(txt) + '</span>';
+  return '<span style="color:#e8344e">' + esc(txt.slice(0, i)) + '</span>' + ' ' + esc(txt.slice(i + 1));
+}
+function loadState(k) {
+  try { var s = JSON.parse(localStorage.getItem(k)); if (s && s.chk) { if (!s.fx) s.fx = {}; return s; } } catch (e) {}
+  return { chk: {}, fx: {} };
+}
+function saveState(k, v) {
+  try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
+}
+function renderCheck(name) {
+  var cfg = DS[name];
+  var st = loadState(cfg.key);
+  var spans = [], starts = [];
+  for (var i = 0; i < cfg.rows.length; ) {
+    var sp = 1;
+    while (i + sp < cfg.rows.length && cfg.rows[i + sp].ch === '') sp++;
+    for (var j = 0; j < sp; j++) { spans.push(sp); starts.push(j === 0); }
+    i += sp;
+  }
+  var mSpans = [], mStarts = [];
+  for (var i = 0; i < cfg.rows.length; ) {
+    var mv = cfg.rows[i].m || '';
+    var sp = 1;
+    while (i + sp < cfg.rows.length && (cfg.rows[i + sp].m || '') === mv) sp++;
+    for (var j = 0; j < sp; j++) { mSpans.push(sp); mStarts.push(j === 0); }
+    i += sp;
+  }
+  var head = '<th>' + (cfg.seqTitle || '序号') + '</th>';
+  if (cfg.subKey) head += '<th>子序</th>';
+  for (var h = 0; h < cfg.cols.length; h++) head += '<th>' + esc(cfg.cols[h][0]) + '</th>';
+  head += '<th>打卡</th><th>复习次数</th><th>复习时间</th>';
+  var body = '';
+  var chapIdx = 0;
+  var curBand = '';
+  for (var r = 0; r < cfg.rows.length; r++) {
+    var row = cfg.rows[r];
+    var band = curBand;
+    if (cfg.chBand && starts[r]) { curBand = chPalette[chapIdx % chPalette.length]; chapIdx++; band = curBand; }
+    var tds = '<td>' + (r + 1) + '</td>';
+    if (cfg.subKey) tds += '<td' + (band ? ' style="background:' + band + '"' : '') + '>' + esc(row[cfg.subKey]) + '</td>';
+    for (var c = 0; c < cfg.cols.length; c++) {
+      var key = cfg.cols[c][1];
+      if (key === 'ch') {
+        var chHtml = '';
+        if (row.ch !== '') {
+          var gi = row.ch.indexOf(' ');
+          var headTxt = gi > 0 ? row.ch.slice(0, gi) : row.ch;
+          var restTxt = gi > 0 ? row.ch.slice(gi + 1) : '';
+          chHtml = '<span style="color:#e8344e">' + esc(headTxt) + '</span>' + (restTxt ? '<br>' + esc(restTxt) : '');
+        }
+        if (cfg.chMerge) {
+          if (row.ch !== '' || starts[r]) {
+            var chBg = '';
+            if (cfg.chBand && starts[r]) chBg = ';background:' + band;
+            tds += '<td rowspan="' + spans[r] + '" style="white-space:normal;min-width:110px' + chBg + '">' + chHtml + '</td>';
+          }
+        } else {
+          tds += '<td style="white-space:normal;min-width:90px">' + chHtml + '</td>';
+        }
+      } else if (key === 'm') {
+        if (mStarts[r]) {
+          var mst = 'style="white-space:normal;min-width:140px' + (row.bg ? ';background:' + row.bg : '') + '"';
+          tds += '<td rowspan="' + mSpans[r] + '" ' + mst + '>' + fmtMb(row[key]) + '</td>';
+        }
+      } else {
+        var bgst = (key === 't' && row.bg) ? ' style="background:' + row.bg + '"' : '';
+        tds += '<td' + bgst + '>' + esc(row[key]) + '</td>';
+      }
+    }
+    tds += '<td class="lk-check' + (st.chk[r] ? ' ck-done' : '') + '" onclick="toggleC(\'' + name + '\',' + r + ')">' + (st.chk[r] ? '&#10003;' : '') + '</td>';
+    var fxs = st.fx[r] || [];
+    tds += '<td class="lk-fx"><div class="lk-fx-ctrl"><span>共' + fxs.length + '次</span><span class="lk-fx-btn lk-fx-plus" onclick="fxC(\'' + name + '\',' + r + ')">+</span></div></td>';
+    tds += '<td class="lk-fx-time" onclick="openFxPopup(\'' + name + '\',' + r + ')">···</td>';
+    body += '<tr' + ((cfg.chBand && starts[r]) ? ' class="chap-top"' : '') + '>' + tds + '</tr>';
+  }
+  var el = document.getElementById('prog-body');
+  el.innerHTML = '<div class="lk-wrap"><table class="lk-table"><thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table></div>';
+  var row = document.createElement('div');
+  row.style.cssText = 'display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;';
+  var btn = document.createElement('button');
+  btn.className = 'act-btn act-reset';
+  btn.style.cssText = 'font-size:15px;padding:8px 18px';
+  btn.textContent = '清除本页打卡记录';
+  btn.onclick = function () {
+    if (confirm('确定清除「' + name + '」的全部打卡记录？')) { saveState(cfg.key, { chk: {}, fx: {} }); renderCheck(name); refreshStat(); }
+  };
+  row.appendChild(btn);
+  var back = document.createElement('button');
+  back.className = 'act-btn act-back';
+  back.style.cssText = 'font-size:15px;padding:8px 18px';
+  back.textContent = '返回';
+  back.onclick = backProg;
+  row.appendChild(back);
+  if (name === '思维 L1(新版)') {
+    var note = document.createElement('span');
+    note.className = 'lk-note';
+    note.textContent = '在思维 L1新版的视频中：X-1都是给小朋友上课。X-2是老师给家长上课，比如对该内容的讲解、摩比课后作业、课后可以做什么等。';
+    row.appendChild(note);
+  }
+  el.appendChild(row);
+}
+var fxPopupState = null;
+function gapTxt(list, i) {
+  var a = new Date(list[i].replace(' ', 'T')).getTime();
+  var b = new Date(list[i - 1].replace(' ', 'T')).getTime();
+  if (isNaN(a) || isNaN(b) || a < b) return '';
+  var s = Math.floor((a - b) / 1000), m = Math.floor(s / 60), h = Math.floor(m / 60), d = Math.floor(h / 24);
+  s %= 60; m %= 60; h %= 24;
+  var out = '';
+  if (d) out += d + '天';
+  if (h) out += h + '小时';
+  if (m) out += m + '分';
+  if (s) out += s + '秒';
+  return out || '0秒';
+}
+function buildFxPopup(name, r) {
+  var cfg = DS[name];
+  var st = loadState(cfg.key);
+  var list = st.fx[r] || [];
+  var txt = '<span class="fx-popup-close" onclick="closeFxPopup()">&times;</span>';
+  txt += '<div class="fx-popup-title">第' + (r + 1) + '行 复习记录（按住标题可拖动）</div>';
+  txt += '<table><thead><tr><th>序号</th><th>复习时间</th><th>删除按键</th><th>相隔时间</th></tr></thead><tbody>';
+  if (list.length === 0) {
+    txt += '<tr><td colspan="4">暂无复习记录</td></tr>';
+  } else {
+    for (var i = 0; i < list.length; i++) {
+      txt += '<tr><td>' + (i + 1) + '</td><td>' + list[i] + '</td><td><span class="lk-fx-btn lk-fx-minus" onclick="fxMinus(\'' + name + '\',' + r + ',' + i + ')">-</span></td><td>' + (i === 0 ? '' : gapTxt(list, i)) + '</td></tr>';
+    }
+  }
+  txt += '</tbody></table>';
+  var el = document.getElementById('fxPopup');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'fxPopup';
+    el.className = 'fx-popup';
+    el.style.display = 'none';
+    document.body.appendChild(el);
+    el.addEventListener('mousedown', fxDragStart);
+  }
+  el.innerHTML = txt;
+  return el;
+}
+function refreshFxPopup(name, r) {
+  if (!fxPopupState || fxPopupState.name !== name || fxPopupState.r !== r) return;
+  var el = buildFxPopup(name, r);
+  el.style.left = fxPopupState.left + 'px';
+  el.style.top = fxPopupState.top + 'px';
+  el.style.display = 'block';
+}
+function openFxPopup(name, r) {
+  var el = buildFxPopup(name, r);
+  el.style.display = 'block';
+  if (!fxPopupState) {
+    el.style.left = Math.max(8, window.innerWidth - el.offsetWidth - 8) + 'px';
+    el.style.top = '220px';
+  } else {
+    el.style.left = fxPopupState.left + 'px';
+    el.style.top = fxPopupState.top + 'px';
+  }
+  fxPopupState = { name: name, r: r, left: parseInt(el.style.left, 10), top: parseInt(el.style.top, 10) };
+}
+function closeFxPopup() {
+  fxPopupState = null;
+  var el = document.getElementById('fxPopup');
+  if (el) el.style.display = 'none';
+}
+function buildStat() {
+  var names = ['数感 L1', '思维 L1(新版)', '思维 L2（新版）', '数感  L2', '数感与思维 L3（上）', '数感与思维 L3（下）'];
+  var txt = '<table><thead><tr><th>页面</th><th>打卡进度</th><th>状态</th></tr></thead><tbody>';
+  var allDone = 0;
+  for (var i = 0; i < names.length; i++) {
+    var n = names[i];
+    var cfg = DS[n];
+    if (!cfg || !cfg.rows) {
+      txt += '<tr><td>' + esc(n) + '</td><td>—</td><td style="color:#999">未配置</td></tr>';
+    } else {
+      var st = loadState(cfg.key);
+      var cnt = 0;
+      for (var idx = 0; idx < cfg.rows.length; idx++) { if (st.chk[idx]) cnt++; }
+      var complete = cnt === cfg.rows.length;
+      if (complete) allDone++;
+      txt += '<tr><td>' + esc(n) + '</td><td>' + cnt + ' / ' + cfg.rows.length + '</td><td>' + (complete ? '<span style="color:#2ecc71;font-weight:bold">已完成</span>' : '<span style="color:#e67e22">进行中</span>') + '</td></tr>';
+    }
+  }
+  txt += '</tbody></table>';
+  txt += '<div style="margin-top:8px;font-weight:bold;color:#4469a8">已完成 ' + allDone + ' / ' + names.length + ' 项</div>';
+  return txt;
+}
+function refreshStat() {
+  var el = document.getElementById('statPopup');
+  if (!el || el.style.display === 'none') return;
+  var l = parseInt(el.style.left, 10), t2 = parseInt(el.style.top, 10);
+  el.innerHTML = '<span class="fx-popup-close" onclick="closeStat()">&times;</span><div class="fx-popup-title">学习进度统计</div>' + buildStat();
+  if (isNaN(l)) l = Math.max(8, window.innerWidth - el.offsetWidth - 8);
+  if (isNaN(t2)) t2 = Math.max(8, Math.round((window.innerHeight - el.offsetHeight) / 2));
+  el.style.left = l + 'px';
+  el.style.top = t2 + 'px';
+}
+function openStat() {
+  var el = document.getElementById('statPopup');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'statPopup';
+    el.className = 'fx-popup stat-popup';
+    document.body.appendChild(el);
+    el.addEventListener('mousedown', statDragStart);
+  }
+  el.innerHTML = '<span class="fx-popup-close" onclick="closeStat()">&times;</span><div class="fx-popup-title">学习进度统计</div>' + buildStat();
+  el.style.display = 'block';
+  el.style.left = Math.max(8, window.innerWidth - el.offsetWidth - 8) + 'px';
+  el.style.top = Math.max(8, Math.round((window.innerHeight - el.offsetHeight) / 2)) + 'px';
+}
+setInterval(refreshStat, 1000);
+function closeStat() {
+  var el = document.getElementById('statPopup');
+  if (el) el.style.display = 'none';
+}
+function fxDragStart(e) {
+  if (e.target.closest && (e.target.closest('.fx-popup-close') || e.target.closest('.lk-fx-btn'))) return;
+  var el = document.getElementById('fxPopup');
+  if (!el) return;
+  e.preventDefault();
+  var startX = e.clientX, startY = e.clientY;
+  var oLeft = parseInt(el.style.left, 10) || 0;
+  var oTop = parseInt(el.style.top, 10) || 0;
+  function move(ev) {
+    var maxL = Math.max(0, window.innerWidth - el.offsetWidth);
+    var maxT = Math.max(0, window.innerHeight - el.offsetHeight);
+    el.style.left = Math.min(Math.max(0, oLeft + ev.clientX - startX), maxL) + 'px';
+    el.style.top = Math.min(Math.max(0, oTop + ev.clientY - startY), maxT) + 'px';
+    if (fxPopupState) { fxPopupState.left = parseInt(el.style.left, 10); fxPopupState.top = parseInt(el.style.top, 10); }
+  }
+  function up() {
+    document.removeEventListener('mousemove', move);
+    document.removeEventListener('mouseup', up);
+  }
+  document.addEventListener('mousemove', move);
+  document.addEventListener('mouseup', up);
+}
+function statDragStart(e) {
+  if (e.target.closest && e.target.closest('.fx-popup-close')) return;
+  var el = document.getElementById('statPopup');
+  if (!el) return;
+  e.preventDefault();
+  var startX = e.clientX, startY = e.clientY;
+  var oLeft = parseInt(el.style.left, 10) || 0;
+  var oTop = parseInt(el.style.top, 10) || 0;
+  function move(ev) {
+    var maxL = Math.max(0, window.innerWidth - el.offsetWidth);
+    var maxT = Math.max(0, window.innerHeight - el.offsetHeight);
+    el.style.left = Math.min(Math.max(0, oLeft + ev.clientX - startX), maxL) + 'px';
+    el.style.top = Math.min(Math.max(0, oTop + ev.clientY - startY), maxT) + 'px';
+  }
+  function up() {
+    document.removeEventListener('mousemove', move);
+    document.removeEventListener('mouseup', up);
+  }
+  document.addEventListener('mousemove', move);
+  document.addEventListener('mouseup', up);
+}
+function nowStr() {
+  var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+}
+function toggleC(name, r) {
+  var cfg = DS[name];
+  var st = loadState(cfg.key);
+  if (st.chk[r]) {
+    if (!confirm('确定取消打卡？')) return;
+    st.chk[r] = false;
+  } else {
+    st.chk[r] = true;
+  }
+  saveState(cfg.key, st);
+  renderCheck(name);
+  refreshStat();
+}
+function fxC(name, r) {
+  var cfg = DS[name];
+  var st = loadState(cfg.key);
+  if (!st.fx[r]) st.fx[r] = [];
+  if (!confirm('确定记录一次复习？')) return;
+  st.fx[r].push(nowStr());
+  saveState(cfg.key, st);
+  renderCheck(name);
+  refreshFxPopup(name, r);
+}
+function fxMinus(name, r, idx) {
+  var cfg = DS[name];
+  var st = loadState(cfg.key);
+  if (!st.fx[r] || typeof st.fx[r][idx] === 'undefined') return;
+  var t = st.fx[r][idx];
+  if (!confirm('确定删除这次复习？\n第' + (idx + 1) + '次 ' + t)) return;
+  st.fx[r].splice(idx, 1);
+  saveState(cfg.key, st);
+  renderCheck(name);
+  refreshFxPopup(name, r);
 }
 
 function showAll(scope) {

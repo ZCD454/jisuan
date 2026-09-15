@@ -108,6 +108,7 @@
   }
   .act-btn:active { transform: scale(.94); }
   .act-next { background: linear-gradient(135deg, #43cea2, #185a9d); }
+  .act-next-on { background: linear-gradient(135deg, #ff7a18, #ff004c); box-shadow: 0 0 16px rgba(255,0,76,.75); border-color: #ff004c !important; color: #fff; }
   .act-all { background: linear-gradient(135deg, #667eea, #764ba2); }
   .act-back { background: linear-gradient(135deg, #f7971e, #ffd200); color: #5b3a00; }
   .lk-note { font-size: 13px; color: #888; max-width: 420px; line-height: 1.5; text-align: left; }
@@ -190,7 +191,10 @@
 <div id="prog" class="screen" style="display:none">
   <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
   <div class="mode-label bg-todo prog-title">数感和思维的学习统计</div>
-  <button class="act-btn act-back" style="font-size:14px;padding:6px 14px" onclick="openStat()">学习进度统计</button>
+  <span style="display:flex;flex-direction:column;gap:6px;align-items:center">
+    <button class="act-btn act-back" style="font-size:14px;padding:6px 14px" onclick="openStat()">学习进度统计</button>
+    <button class="act-btn act-back" style="font-size:13px;padding:4px 12px" onclick="backProg()">返回</button>
+  </span>
   <span style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:4px;margin-left:auto">
     <span style="display:flex;gap:10px;align-items:center">
       <button class="act-btn act-all" style="font-size:14px;padding:6px 14px" onclick="exportProg()">&#128228; 导出</button>
@@ -208,10 +212,7 @@
     <button class="prog-btn" onclick="showProg('数感与思维 L3（下）')">数感与思维 L3（下）</button>
   </div>
   <div id="prog-body" class="prog-body">
-    <div style="display:flex;align-items:center;gap:20px">
-      <div class="todo-msg">点击上面，选切界面</div>
-      <button class="act-btn act-back" style="font-size:15px;padding:8px 18px" onclick="backProg()">返回</button>
-    </div>
+    <div class="todo-msg">点击上面，选切界面</div>
   </div>
 </div>
 
@@ -225,11 +226,11 @@
       </div>
       <div class="modes-mid">
         <div class="mode-cell">
-          <button class="act-btn act-next" onclick="next('s1')">简单模式1</button>
+          <button id="btnS1" class="act-btn act-next" onclick="next('s1')">简单模式1</button>
           <div id="desc1" class="mode-desc"></div>
         </div>
         <div class="mode-cell">
-          <button class="act-btn act-next" onclick="next('s2')">简单模式2</button>
+          <button id="btnS2" class="act-btn act-next" onclick="next('s2')">简单模式2</button>
           <div id="desc2" class="mode-desc"></div>
         </div>
         <div class="mode-cell">
@@ -447,8 +448,18 @@ function drawOne(M, k) {
   renderTrack();
 }
 
+function setModeLight(k) {
+  var ids = ['btnS1', 'btnS2', 'btnAdv'];
+  var on = { s1: 0, s2: 1, adv: 2 };
+  for (var i = 0; i < ids.length; i++) {
+    var b = document.getElementById(ids[i]);
+    if (!b) continue;
+    if (on[k] === i) { b.classList.add('act-next-on'); } else { b.classList.remove('act-next-on'); }
+  }
+}
 function next(k) {
   if (k === 100) {
+    setModeLight(null);
     var arr = cur === 1 ? ADD : SUB;
     var i = Math.floor(Math.random() * arr.length);
     if (i === lastIdx && lastArr === arr && arr.length > 1) i = (i + 1) % arr.length;
@@ -465,6 +476,7 @@ function next(k) {
   }
   mode = k;
   panelOn = true;
+  setModeLight(k);
   var M = MODE_DATA[cur];
   M.active = mode;
   if (eqMode !== mode) {
@@ -548,12 +560,6 @@ function showProg(name) {
   el.innerHTML =
     '<div class="mode-label bg-todo" style="font-size:24px">' + name + '</div>' +
     '<div class="todo-msg">点击上面，选切界面</div>';
-  var back = document.createElement('button');
-  back.className = 'act-btn act-back';
-  back.style.cssText = 'font-size:15px;padding:8px 18px';
-  back.textContent = '返回';
-  back.onclick = backProg;
-  el.appendChild(back);
 }
 
 var curProg = '';
@@ -659,12 +665,6 @@ function renderCheck(name) {
     if (confirm('确定清除「' + name + '」的全部打卡记录？')) { saveState(cfg.key, { chk: {}, fx: {} }); renderCheck(name); refreshStat(); }
   };
   row.appendChild(btn);
-  var back = document.createElement('button');
-  back.className = 'act-btn act-back';
-  back.style.cssText = 'font-size:15px;padding:8px 18px';
-  back.textContent = '返回';
-  back.onclick = backProg;
-  row.appendChild(back);
   if (name === '思维 L1(新版)') {
     var note = document.createElement('span');
     note.className = 'lk-note';
